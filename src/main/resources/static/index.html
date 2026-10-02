@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Debabrata Kamila - Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0f1626;--card:#16213a;--line:#26335a;--text:#e6eaf7;--mute:#9aa6c6;--accent:#7b9bff}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:'Fredoka',system-ui,sans-serif;color:var(--text);line-height:1.8;
+background-color:var(--bg);
+background-image:linear-gradient(rgba(123,155,255,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(123,155,255,.06) 1px,transparent 1px);
+background-size:48px 48px}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+nav{display:flex;gap:22px;flex-wrap:wrap;padding:28px 0;font-size:1.05rem}
+nav a{color:var(--text);text-decoration:none}
+nav a:hover{color:var(--accent)}
+.hero{padding:70px 0 60px}
+.hero h1{font-size:clamp(2.8rem,9vw,4.6rem);margin:0 0 20px;line-height:1.1;font-weight:600}
+.hero p{color:var(--mute);font-size:1.25rem;max-width:640px;margin:0 0 32px}
+.btn{display:inline-block;padding:16px 28px;border-radius:14px;text-decoration:none;font-size:1.05rem;margin:0 10px 10px 0;border:2px solid var(--text);color:var(--text);background:none;font-family:inherit;cursor:pointer}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+section{padding:56px 0;border-top:3px solid var(--text)}
+section h2{font-size:2.6rem;margin:0 0 28px;font-weight:600}
+.about p{font-size:1.15rem;margin:0 0 32px}
+.stats{display:flex;gap:40px;flex-wrap:wrap}
+.stats b{display:block;font-size:2.8rem;color:var(--accent);line-height:1.2}
+.stats span{color:var(--mute)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:22px;padding:26px 28px;margin-bottom:22px}
+.card h3{margin:0 0 14px;font-size:1.5rem;font-weight:600}
+.card p{color:var(--text);margin:0 0 16px;font-size:1.1rem}
+.chip{display:inline-block;padding:8px 18px;border:1px solid var(--line);background:#0f1626;border-radius:12px;margin:0 8px 10px 0}
+.note{color:var(--mute);margin:6px 0 0!important}
+.edu{border-left:5px solid var(--accent);padding-left:26px}
+.edu div{margin-bottom:28px}
+.edu h3{margin:0;font-size:1.5rem;font-weight:600}
+.edu small{color:var(--mute);font-size:1rem}
+a{color:var(--accent)}
+label{display:block;margin:22px 0 8px;font-size:1.1rem}
+input,textarea{width:100%;padding:16px;border-radius:14px;border:1px solid var(--line);background:var(--card);color:var(--text);font:inherit}
+textarea{min-height:150px;resize:vertical}
+#cStatus{margin-top:14px;color:var(--mute)}
+footer{text-align:center;color:var(--mute);padding:40px 0}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+  <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+</nav>
+<div class="hero">
+  <h1 id="pName"></h1>
+  <p id="pTagline"></p>
+  <a class="btn primary" href="#projects">See my projects</a>
+  <a class="btn" href="#contact">Get in touch</a>
+  <div id="links" style="margin-top:18px"></div>
+</div>
+<section id="about" class="about">
+  <h2>About</h2>
+  <p id="pAbout"></p>
+  <div class="stats">
+    <div><b id="sCgpa"></b><span id="sCgpaL"></span></div>
+    <div><b id="sYear"></b><span>Graduation year</span></div>
+    <div><b id="sLangs"></b><span>Languages I code in</span></div>
+  </div>
+</section>
+<section id="skills">
+  <h2>Skills</h2>
+  <div id="skillsBox"></div>
+</section>
+<section id="projects">
+  <h2>Projects</h2>
+  <div id="projectsBox"></div>
+</section>
+<section id="education">
+  <h2>Education</h2>
+  <div class="edu">
+    <div><h3>BTech, Siksha 'O' Anusandhan University</h3><small>Bhubaneswar · 2024 to 2028 · CGPA 8.6 (4th sem)</small></div>
+    <div><h3>Class 12</h3><small>76%</small></div>
+    <div><h3>Class 10</h3><small>86%</small></div>
+  </div>
+</section>
+<section id="contact">
+  <h2>Contact</h2>
+  <p id="pContact"></p>
+  <label for="cName">Your name</label><input id="cName">
+  <label for="cEmail">Your email</label><input id="cEmail" type="email">
+  <label for="cMsg">Message</label><textarea id="cMsg"></textarea>
+  <p><button class="btn primary" id="cSend" style="margin-top:20px">Send message</button></p>
+  <div id="cStatus"></div>
+</section>
+<footer id="foot"></footer>
+</div>
+<script>
+// ====== EDIT YOUR INFO HERE ======
+const PROFILE = {
+  name: "Debabrata Kamila",
+  tagline: "BTech student at SOA University who likes solving problems with code and maths, aiming for developer and team-lead roles.",
+  about: "I'm a third-year BTech student at Siksha 'O' Anusandhan University in Bhubaneswar, graduating in 2028. I work mainly in Java and Python, build web pages with HTML and CSS, and I'm getting into C. I enjoy breaking a hard problem into small steps, and I want to grow into a developer who can also lead a team.",
+  cgpa: "8.6", cgpaLabel: "CGPA after 4th semester",
+  gradYear: "2028", languagesCount: "4",
+  location: "Bhubaneswar, Odisha", email: "debabratakamila04@gmail.com", phone: "9937405464"
+};
+// Leave a link empty ("") to hide it
+const LINKS = { GitHub: "https://github.com/Devv-27", LinkedIn: "", Resume: "" };
+const SKILLS = {
+  "Languages": ["Java", "Python", "C", "JavaScript"],
+  "Web": ["HTML", "CSS"],
+  "Strengths": ["Problem solving", "Mathematics", "Team management"]
+};
+const PROJECTS = [
+  { title: "Portfolio with a custom CMS",
+    text: "This site. Content is managed through my own admin panel with JWT login and served by a REST API instead of being hard-coded.",
+    tags: ["Java", "Spring Boot", "PostgreSQL", "React", "Tailwind CSS", "JWT"], note: "In progress", github: "", live: "" },
+  { title: "End-to-end encrypted chat space",
+    text: "A chat app where messages are encrypted on the sender's device and only the recipient can read them, so the server never sees plain text.",
+    tags: ["JavaScript", "HTML", "CSS", "Python"], note: "Built by me", github: "", live: "" }
+];
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const chips = a => a.map(t => `<span class="chip">${esc(t)}</span>`).join('');
+document.title = PROFILE.name + ' - Portfolio';
+pName.textContent = PROFILE.name; pTagline.textContent = PROFILE.tagline; pAbout.textContent = PROFILE.about;
+sCgpa.textContent = PROFILE.cgpa; sCgpaL.textContent = PROFILE.cgpaLabel; sYear.textContent = PROFILE.gradYear; sLangs.textContent = PROFILE.languagesCount;
+pContact.innerHTML = esc(PROFILE.location) + ' · <a href="mailto:' + esc(PROFILE.email) + '">' + esc(PROFILE.email) + '</a> · ' + esc(PROFILE.phone);
+foot.textContent = '©️ ' + new Date().getFullYear() + ' ' + PROFILE.name;
+links.innerHTML = Object.entries(LINKS).filter(([k, v]) => v).map(([k, v]) => `<a href="${esc(v)}" target="_blank" rel="noopener" style="margin-right:18px">${esc(k)}</a>`).join('');
+skillsBox.innerHTML = Object.entries(SKILLS).map(([k, v]) =>
+  `<div class="card"><h3>${esc(k)}</h3>${chips(v)}</div>`).join('');
+projectsBox.innerHTML = PROJECTS.map(p =>
+  `<div class="card"><h3>${esc(p.title)}</h3><p>${esc(p.text)}</p>${chips(p.tags)}<p class="note">${esc(p.note)}</p>${p.github ? `<a href="${esc(p.github)}" target="_blank" rel="noopener">GitHub</a> ` : ''}${p.live ? `<a href="${esc(p.live)}" target="_blank" rel="noopener">Live demo</a>` : ''}</div>`).join('');
+const API = location.protocol === 'file:' ? 'http://localhost:8080' : '';
+cSend.onclick = async () => {
+  const body = { name: cName.value.trim(), email: cEmail.value.trim(), message: cMsg.value.trim() };
+  if (!body.name || !body.email || !body.message) { cStatus.textContent = 'Please fill all fields.'; return; }
+  try {
+    const r = await fetch(API + '/api/contact', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+    cStatus.textContent = r.ok ? 'Message sent. Thank you!' : 'Could not send. Please try again.';
+    if (r.ok) cName.value = cEmail.value = cMsg.value = '';
+  } catch (e) { cStatus.textContent = 'Server not reachable.'; }
+};
+</script>
+</body>
+</html>

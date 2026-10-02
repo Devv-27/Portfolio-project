@@ -1,19 +1,24 @@
-# Portfolio CMS - Backend (Spring Boot)
-Created By: Debabrata Kamila
+# Portfolio CMS
 
-## Run 
-Server: http://localhost:8080  |  Default admin: admin / admin123 (set ADMIN_PASSWORD to change)
+A Spring Boot based Portfolio Management System.
 
+## Features
+- Portfolio website
+- Project management
+- Admin panel
+- Spring Boot backend
+- Maven
+- HTML/CSS/JavaScript
 
+## How to Run
 
-## Endpoints
-- POST /api/auth/login, /api/auth/refresh
-- GET, PUT /api/about
-- GET, POST, PUT, DELETE: /api/skills, /projects, /blogs, /experience, /testimonials, /services
+### Requirements
+- Java 17+
+- Maven
 
+### Run
 
-
-
-## Code map (src/main/java/com/debabrata/portfolio)
-Models.java = tables | Repos.java = DB access | Api.java = all endpoints
-SecurityConfig.java + Jwt.java = login/JWT | DataSeeder.java = first-run data
+```bash
+git clone https://github.com/Devv-27/Portfolio-project.git
+cd Portfolio-project
+mvn spring-boot:run

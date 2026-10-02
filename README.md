@@ -1,5 +1,5 @@
 # Portfolio CMS - Backend (Spring Boot)
-Owner: Debabrata Kamila
+Created By: Debabrata Kamila
 
 ## Run 
 Server: http://localhost:8080  |  Default admin: admin / admin123 (set ADMIN_PASSWORD to change)
